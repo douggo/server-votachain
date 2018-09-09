@@ -34,4 +34,17 @@ describe('Class: Blockchain', () => {
         bc2.chain[1].dado = 'novoDado_corrompido';
         expect(bc.isChainValida(bc2.chain)).toBe(false);
     });
+
+    it('Substituí a chain atual por uma chain válida', () => {
+        bc2.adicionaBlock('novoDado_BSN');
+        bc.substituiChain(bc2.chain);
+        expect(bc.chain).toEqual(bc2.chain);
+    });
+
+    it('Não realiza a substituição da chain que seja igual ou menor que o tamanho da chain antiga', () => {
+        bc.adicionaBlock('novoDado_bc');
+        bc.substituiChain(bc2.chain);
+        expect(bc.chain).not.toEqual(bc2.chain);
+
+    });
 });

@@ -27,6 +27,18 @@ class Blockchain {
 
         return true;
     }
+
+    substituiChain(novaChain) {
+        if (novaChain.length <= this.chain.length) {
+            console.log('Chain recebida é menor ou igual a chain atual, portanto não será substituída.');
+            return;
+        } else if (!this.isChainValida(novaChain)) {
+            console.log('Chain recebida não é válida.');
+            return;
+        }
+        console.log('Chain aceita! Substuíndo a chain anterior com a nova...');
+        this.chain = novaChain; 
+    }
 }
 
 module.exports = Blockchain;
