@@ -1,3 +1,4 @@
 const DIFICULDADE = 4;
+const FREQUENCIA_MINEIRACAO = 3000;
 
-module.exports = { DIFICULDADE };
+module.exports = { DIFICULDADE, FREQUENCIA_MINEIRACAO };
