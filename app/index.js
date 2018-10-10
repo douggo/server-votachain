@@ -10,10 +10,7 @@ const app = express();
 const bc = new Blockchain();
 const p2pServer = new P2pServer(bc);
 
-app.use(bodyParser.json(), function(req, res) {
-    res.setHeader('Acess-Control-Allow-Origin', 'https://douggo.github.io');
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST');
-});
+app.use(bodyParser.json());
 
 app.get('/blocks', (req, res) => {
     res.json(bc.chain);
