@@ -25,6 +25,7 @@ app.post('/mine', (req, res) => {
     res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, PATCH, DELETE");
     res.setHeader("Access-Control-Allow-Headers", "X-Requested-With,content-type");
     res.setHeader("Access-Control-Allow-Credentials", true);
+    console.log(req.body.dado);
     const block = bc.adicionaBlock(req.body.dado);
     console.log(`Novo bloco adicionado: ${block.toString()}`);
     p2pServer.sincronizaChains();
