@@ -10,22 +10,18 @@ const app = express();
 const bc = new Blockchain();
 const p2pServer = new P2pServer(bc);
 
-app.use(bodyParser.json());
+app.use(bodyParser.json(), function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    res.header("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, PATCH, DELETE");
+    next();
+});
 
 app.get('/blocks', (req, res) => {
-    res.setHeader("Access-Control-Allow-Origin", "*");
-    res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, PATCH, DELETE");
-    res.setHeader("Access-Control-Allow-Headers", "X-Requested-With,content-type");
-    res.setHeader("Access-Control-Allow-Credentials", true);
     res.json(bc.chain);
 });
 
 app.post('/mine', (req, res) => {
-    res.setHeader("Access-Control-Allow-Origin", "*");
-    res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, PATCH, DELETE");
-    res.setHeader("Access-Control-Allow-Headers", "X-Requested-With,content-type");
-    res.setHeader("Access-Control-Allow-Credentials", true);
-    console.log(req.body.dado);
     const block = bc.adicionaBlock(req.body.dado);
     console.log(`Novo bloco adicionado: ${block.toString()}`);
     p2pServer.sincronizaChains();
