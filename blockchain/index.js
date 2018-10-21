@@ -5,9 +5,9 @@ class Blockchain {
         this.chain = [Block.genesis()];
     }
 
-    adicionaBlock(dado) {
+    adicionaBlock(id_eleicao, id_candidato) {
         const blockAnterior = this.chain[this.chain.length - 1];
-        const block = Block.minerarBlock(blockAnterior, dado);
+        const block = Block.minerarBlock(blockAnterior, id_eleicao, id_candidato);
         this.chain.push(block);
 
         return block;
