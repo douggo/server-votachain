@@ -19,7 +19,6 @@ app.use(bodyParser.json(), function(req, res, next) {
 
 app.get('/blocks', (req, res) => {
     res.json(bc.chain);
-    //teste
 });
 
 app.post('/mine', (req, res) => {
