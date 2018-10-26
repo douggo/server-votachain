@@ -25,14 +25,6 @@ describe('Class: Block', () => {
     it('Gera um hash que coincide com a dificuldade', () => {
         expect(block.hash.substring(0, block.dificuldade)).toEqual('0'.repeat(block.dificuldade));
     });
-
-    it('Diminui a dificuldade para blocks que foram mineirados lentamente', () => {
-        expect(Block.ajustarDificuldade(block, block.timestamp + 360000)).toEqual(block.dificuldade - 1);
-    });
-
-    it('Aumenta a dificuldade para blocks que foram mineriados rapidamente', () => {
-        expect(Block.ajustarDificuldade(block, block.timestamp + 1)).toEqual(block.dificuldade + 1);
-    });
 });
 
 
