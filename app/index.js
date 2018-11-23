@@ -3,7 +3,7 @@ const bodyParser = require('body-parser');
 const Blockchain = require('../blockchain');
 const P2pServer = require('./p2p-server');
 
-const PORT = process.env.PORT || 8000;
+const PORT = process.env.PORT || 3001;
 const HOST_PORT = process.env.HOST_PORT || '0.0.0.0';
 
 const app = express();
