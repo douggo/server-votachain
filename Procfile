@@ -1,1 +1,1 @@
-web: node ./app -p $PORT
+web: PEERS=ws:https://whispering-refuge-53254.herokuapp.com:5001 node ./app -p $PORT
